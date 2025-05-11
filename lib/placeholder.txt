@@ -1,1 +1,46 @@
+import 'package:flutter/material.dart';
 
+void main() => runApp(AkbeyApp());
+
+class AkbeyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Akbey',
+      theme: ThemeData.dark(),
+      home: AkbeyHomePage(),
+    );
+  }
+}
+
+class AkbeyHomePage extends StatefulWidget {
+  @override
+  _AkbeyHomePageState createState() => _AkbeyHomePageState();
+}
+
+class _AkbeyHomePageState extends State<AkbeyHomePage> {
+  bool sesliYanıt = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text('Akbey Asistan')),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text('Sesli Yanıt: ${sesliYanıt ? "Açık" : "Kapalı"}'),
+            Switch(
+              value: sesliYanıt,
+              onChanged: (value) {
+                setState(() {
+                  sesliYanıt = value;
+                });
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
